@@ -1,5 +1,7 @@
-*.csv
-*.html
-*.cdf
-*.ipynb
-*.nc
+goes_data/
+omni_data/
+other_data/
+pydata/
+sharp_data/
+
+

@@ -2,7 +2,7 @@ import pyspedas
 import pandas as pd
 from pytplot import get_data
 
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 # Configuration
 start_date = '1995-01-01'
 end_date = '2024-12-31'
@@ -10,7 +10,7 @@ range_date = [start_date, end_date]
 
 print(f"Processing OMNI data from {start_date} to {end_date}...")
 
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 # Download OMNI data
 # Check https://pyspedas.readthedocs.io/en/latest/omni.html
 
@@ -59,5 +59,5 @@ if omni_vars:
 else:
     print("✗ Download failed")
 
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 print("Everything done!")

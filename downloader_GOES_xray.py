@@ -2,15 +2,15 @@ import os
 import pyspedas
 import pandas as pd
 from pytplot import get_data
-from pyspedas.projects.goes import load
 
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 # Configuration
 start_date = '1995-01-01'
 end_date = '2020-12-31'
 range_date = [start_date, end_date]
 probes = list(range(8, 18+1))  # GOES 8-18
 
+#---------------------------------------------------------------------------
 # Create output directory
 os.makedirs("./goes_data", exist_ok=True)
 
@@ -22,90 +22,10 @@ successful_probes = []
 
 #---------------------------------------------------------------------------
 # Download GOES data
-# Check https://pyspedas.readthedocs.io/en/latest/kyoto.html
+# Check https://pyspedas.readthedocs.io/en/latest/goes.html
 
-"""print("Downloading GOES data...")
+print("Downloading GOES X-ray data...")
 
-try:
-    goes_vars = load(trange=range_date, datatype='1min', time_clip=True)
-    #goes_vars = pyspedas.projects.goes(trange=range_date, probe='15', instrument='fgm', datatype='1min', time_clip=True)
-except Exception as e:
-    print(f"Error downloading data: {e}")
-    goes_vars = []
-
-if goes_vars:
-    # GOES provides two X-ray channels: A (0.5-4 Å) and B (1-8 Å)
-    for var in goes_vars:
-        if 'A_AVG' in var or 'B_AVG' in var:
-            xray_data = get_data(var)
-            if xray_data:
-                times, values = xray_data
-                df = pd.DataFrame({
-                    'datetime': pd.to_datetime(times, unit='s'),
-                    'xray_flux': values.flatten()
-                })
-                df.set_index('datetime', inplace=True)
-                
-                channel = 'A' if 'A_AVG' in var else 'B'
-                df.to_csv(f'goes_xray_{channel}_channel.csv')
-                print(f"✓ Saved GOES X-ray channel {channel}: {len(df)} records")
-            else:
-                print("✗ No usable X-ray data extracted")
-        else:
-            print("✗ No usable GOES variables extracted")
-else:
-    print("✗ Download failed")"""
-
-#---------------------------------------------------------------------------
-# Download GOES data
-"""print("Downloading GOES data...")
-
-for probe in probes:
-    try:
-        goes_vars = load(trange=range_date, datatype='1min', probe='10', instrument='xrs', time_clip=True)
-    except Exception as e:
-        print(f"Error downloading data: {e}")
-        goes_vars = []
-
-if goes_vars:
-    frames = []
-
-    for var in goes_vars:
-        data = get_data(var)
-        if data is None:
-            continue
-
-        # data can be (times, values) or (times, values, extra)
-        if len(data) == 2:
-            times, values = data
-        elif len(data) == 3:
-            times, values, _ = data
-        else:
-            continue
-
-        # build DataFrame
-        df = pd.DataFrame({
-            "datetime": pd.to_datetime(times, unit="s"),
-            var: values.flatten() if values.ndim == 1 else values[:, 0]
-        })
-        df.set_index("datetime", inplace=True)
-        frames.append(df)
-
-    if frames:
-        # join all variables on datetime
-        df_all = pd.concat(frames, axis=1)
-
-        # Save to CSV
-        df_all.to_csv("./goes_data/goes_data.csv")
-        print(f"✓ Saved {len(df_all)} GOES records")
-        print(f"Date range: {df_all.index.min()} to {df_all.index.max()}")
-    else:
-        print("✗ No usable GOES variables extracted")
-else:
-    print("✗ Download failed")"""
-
-
-#---------------------------------------------------------------------------
 # Loop through all probes
 for probe in probes:
     print(f"\nTrying GOES-{probe}...")
@@ -198,5 +118,5 @@ else:
 print("\nDownload complete!")
 print("Files saved in ./goes_data/ directory")
 
-# ---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
 print("Everything done!")

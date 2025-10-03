@@ -9,7 +9,7 @@ import time
 # Configuration
 start_date = datetime(2010, 5, 1)   # SHARP starts ~2010-05
 day = timedelta(days=1)
-end_date   = datetime(2020, 12, 31) + day
+end_date   = datetime(2024, 12, 31) + day
 current = start_date
 
 out_dir = "./sharp_data/sharp_daily"

@@ -42,6 +42,7 @@ keys = [
     'MEANSHR', 
     'SHRGT45', 
     'R_VALUE',
+    'AREA_ACR',
     'HARPNUM',
 ]
 

@@ -16,33 +16,47 @@ print(f"Processing Dst data from {start_date} to {end_date}...")
 
 print("Downloading Dst data...")
 
+dst_vars = None
 try:
-    dst_vars = pyspedas.projects.kyoto.dst(trange=range_date)
+    # Try modern API (pyspedas 1.0+)
+    dst_vars = pyspedas.kyoto.dst(trange=range_date)
+    print("✓ Downloaded using modern API")
+except AttributeError:
+    try:
+        # Try old API (pyspedas < 1.0)
+        dst_vars = pyspedas.projects.kyoto.dst(trange=range_date)
+        print("✓ Downloaded using legacy API")
+    except Exception as e:
+        print(f"✗ Error downloading data: {e}")
 except Exception as e:
-    print(f"Error downloading data: {e}")
+    print(f"✗ Error downloading data: {e}")
 
 if dst_vars:
-    # Extract the data
-    dst_data = get_data(dst_vars[0])  # dst_vars[0] is usually 'kyoto_dst'
-    
-    if dst_data:
-        times, values = dst_data
+    try:
+        # Extract the data
+        dst_data = get_data(dst_vars[0])  # dst_vars[0] is usually 'kyoto_dst'
         
-        # Convert to pandas DataFrame
-        df = pd.DataFrame({
-            'datetime': pd.to_datetime(times, unit='s'),
-            'dst': values.flatten()
-        })
-        df.set_index('datetime', inplace=True)
-        
-        # Save to CSV
-        df.to_csv('../data/pydata/geom_indices/kyoto/dst_data.csv')
-        print(f"✓ Saved {len(df)} Dst records")
-        print(f"Date range: {df.index.min()} to {df.index.max()}")
-    else:
-        print("✗ No data retrieved")
+        if dst_data:
+            times, values = dst_data
+            
+            # Convert to pandas DataFrame
+            df = pd.DataFrame({
+                'datetime': pd.to_datetime(times, unit='s'),
+                'dst': values.flatten()
+            })
+            df.set_index('datetime', inplace=True)
+            
+            # Save to CSV
+            output_path = '../data/pydata/geom_indices/kyoto/dst_data.csv'
+            df.to_csv(output_path)
+            print(f"✓ Saved {len(df)} Dst records to {output_path}")
+            print(f"Date range: {df.index.min()} to {df.index.max()}")
+        else:
+            print("✗ No data retrieved from pytplot")
+    except Exception as e:
+        print(f"✗ Error processing data: {e}")
 else:
-    print("✗ Download failed")
+    print("✗ Download failed - dst_vars is None")
 
 #----------------------------------------------------------------------------
 print("Everything done!")

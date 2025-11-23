@@ -2,6 +2,9 @@ import sys
 print(f"Python executable: {sys.executable}")
 print(f"Python version: {sys.version}")
 
+import tensorflow as tf
+print(f"TF version: {tf.__version__}")
+
 try:
     import pandas as pd
     print(f"Pandas version: {pd.__version__}")

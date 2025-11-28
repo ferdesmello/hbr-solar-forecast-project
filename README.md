@@ -12,9 +12,9 @@ I choose [space weather](https://en.wikipedia.org/wiki/Space_weather) forecastin
 I wrote scripts to access and download data from two main sources:
 
 * [PySPEDAS](https://pyspedas.readthedocs.io/en/latest/index.html), a Python library that offers many types of data from the Sun. I used it for:
-  * [GOES](https://pyspedas.readthedocs.io/en/latest/goes.html), to access data of the [GOES](https://www.ospo.noaa.gov/operations/goes/) satellites missions.
-  * [OMNI](https://pyspedas.readthedocs.io/en/latest/geomagnetic_indices.html#omni-solar-wind-and-magnetospheric-indices), to access data from many different instruments and missions.
-* [DRMS](https://docs.sunpy.org/projects/drms/en/stable/), a Python library to access a variety of spaceweather quantities. I used it for [SHARP](http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm).
+  * [GOES](https://pyspedas.readthedocs.io/en/latest/goes.html), to access data of the [GOES](https://www.ospo.noaa.gov/operations/goes/) satellite missions.
+  * [OMNI](https://pyspedas.readthedocs.io/en/latest/geomagnetic_indices.html#omni-solar-wind-and-magnetospheric-indices), to access data from many different instruments and missions. I used it fora mix of data.
+* [DRMS](https://docs.sunpy.org/projects/drms/en/stable/), a Python library to access a variety of spaceweather quantities. I used it for [SHARP](http://jsoc.stanford.edu/doc/data/hmi/sharp/sharp.htm) data.
 
 And I used a dataset available at Kaggle:
 
@@ -22,11 +22,13 @@ And I used a dataset available at Kaggle:
 
 The scripts are in the [downloaders](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/downloaders) folder.
 
+The files downloaded are saved in the [data](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/data) folder, but are too big to include in this repository.
+
 #
 
 ### 2. Cleaning the data
 
-The datasets have many null values, windows of no data, or the data were taken at different time paces. I cleaned and merged the datasets into two: one for the solar flares () and one for the geomagnetic storms ().
+The datasets have many null values, windows of no data, or the data were taken at different time paces. I cleaned and merged the datasets into two: one for the solar flares (data_flares.csv) and one for the geomagnetic storms (data_storms.csv), which you can find in the [data](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/data) folder.
 
 The cleaning scripts are in the [filters](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/filters) folder.
 

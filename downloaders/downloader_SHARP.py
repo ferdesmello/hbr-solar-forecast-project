@@ -1,9 +1,9 @@
-# fetch_sharp_keywords.py
 import drms
 import pandas as pd
 from datetime import datetime, timedelta
 import os
 import time
+from dotenv import load_dotenv
 
 #---------------------------------------------------------------------------
 # Configuration
@@ -15,8 +15,20 @@ current = start_date
 out_dir = "../data/sharp_data/sharp_daily"
 os.makedirs(out_dir, exist_ok=True)
 
-# A JSOC valid email. Register here: http://jsoc.stanford.edu/ajax/register_email.html
-c = drms.Client(email="fdesmello@gmail.com")
+#------------------------------------------------------------------
+try:
+    # Load environment variables from the .env file
+    load_dotenv(dotenv_path='../KEYs/E_MAIL.env')
+
+    # Get the email from the environment variable
+    e_mail = os.environ.get("E_MAIL")
+
+except Exception as e:
+    print("Error loading .env file or getting E_MAIL:", e)
+    e_mail = None
+
+# A JSOC valid email is needed. Register here: http://jsoc.stanford.edu/ajax/register_email.html
+c = drms.Client(email=e_mail)
 
 # Metadata query: get keywords, not segments
 # Check http://jsoc.stanford.edu/doc/data/hmi/sharp/old/sharp.MB.htm

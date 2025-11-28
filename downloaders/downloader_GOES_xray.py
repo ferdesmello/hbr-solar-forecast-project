@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+import pyspedas
+from pytplot import get_data
 
 #--------------------------------------------------------------------------- 
 # Configuration
@@ -55,8 +57,6 @@ def process_existing():
 #--------------------------------------------------------------------------- 
 def download_data():
     """Download GOES data with pyspedas and save per-probe files."""
-    import pyspedas
-    from pytplot import get_data
 
     os.makedirs(data_dir, exist_ok=True)
     range_date = [start_date, end_date]
@@ -67,6 +67,7 @@ def download_data():
     all_probe_data = []
     successful_probes = []
 
+    # Check https://pyspedas.readthedocs.io/en/latest/goes.html
     for probe in probes:
         print(f"\nTrying GOES-{probe}...")
         try:

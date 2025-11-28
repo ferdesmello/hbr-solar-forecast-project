@@ -7,3 +7,4 @@ flare_tuning/
 ml_env/
 py_astro_env/
 tuner/
+*.ai

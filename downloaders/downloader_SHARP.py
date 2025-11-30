@@ -1,3 +1,7 @@
+"""This is a script to download SHARP data from JSOC on a daily basis,
+and combine them into a single CSV file."""
+#---------------------------------------------------------------------------
+
 import drms
 import pandas as pd
 from datetime import datetime, timedelta

@@ -1,3 +1,7 @@
+"""This is a script to download OMNI data using PySPEDAS,
+and save it as a CSV file."""
+#---------------------------------------------------------------------------
+
 import pyspedas
 import pandas as pd
 from pytplot import get_data

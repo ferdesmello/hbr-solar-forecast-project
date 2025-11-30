@@ -1,3 +1,7 @@
+"""This is a script to download GOES X-ray data using PySPEDAS,
+and save it as CSV files per probe and combined."""
+#---------------------------------------------------------------------------
+
 import os
 import pandas as pd
 import pyspedas

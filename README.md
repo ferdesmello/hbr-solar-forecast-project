@@ -3,9 +3,38 @@
 ## Overview
 I developed this project as the final activity of the first phase of the course Residência em Tecnologias Aeroespaciais - Inteligência Artificial offered by Instituto Hardware BR, applying what I learning in the course to solve an aerospace problem.
 
-I choose [space weather](https://en.wikipedia.org/wiki/Space_weather) forecasting, especially the forecasting of [solar flares](https://en.wikipedia.org/wiki/Solar_flare) and [geomagnetic storms](https), as space weather can significantly impact communications, the electrical grid, and satellites.
+I choose [space weather](https://en.wikipedia.org/wiki/Space_weather) forecasting, especially the forecasting of [solar flares](https://en.wikipedia.org/wiki/Solar_flare) and [geomagnetic storms](https), as space weather can significantly impact communications, the electrical grid, satellites, and astronauts in orbit.
 
-Please, read [Fernando Mello - previsão de flares e tempestades geomagnéticas](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/Fernando%20Mello%20-%20previsão%20de%20flares%20e%20tempestades%20geomagnéticas.pdf) for more details.
+Please, read [the project documentation](https://github.com/ferdesmello/hbr-solar-forecast-project/tree/main/Fernando%20Mello%20-%20previsão%20de%20flares%20e%20tempestades%20geomagnéticas.pdf) (in Portuguese) or watch this [short video presentation](https://youtu.be/IQgli0LVTLw) (in Portuguese) for more details.
+
+![Pictures of the main events.](./figures/Sun's%20things.jpg "Solar and terrestrial events related to space weather. a) A large cluster of sunspots. Credit: NASA/SDO/AIA. b) A large solar flare seen in X-rays. Credit: NASA/SDO. c) A large coronal mass ejection with a coronagraph obscuring the view of the Sun. Credit: NASA/GSFC/SOHO. d) Aurora australis seen from the International Space Station. Credit: NASA.")
+Figure: Solar and terrestrial events related to space weather. a) A large cluster of sunspots. Credit: NASA/SDO/AIA. b) A large solar flare seen in X-rays. Credit: NASA/SDO. c) A large coronal mass ejection with a coronagraph obscuring the view of the Sun. Credit: NASA/GSFC/SOHO. d) Aurora australis seen from the International Space Station. Credit: NASA.
+
+## Repository structure
+
+<pre>
+├── data/                           # Where all the datasets are stored
+├── downloaders/                    # Scripts to download the raw datasets
+│   ├── downloader_Dst.py
+│   ├── downloader_GOES_xray.py
+│   ├── downloader_OMNI.py
+│   └── downloader_SHARP.py
+├── figures/                        # Final figures with forecasts' results
+├── filters/                        # Scripts to clean and reduce the raw datasets
+│   ├── filter_flares.ipynb
+│   └── filter_storms.ipynb
+├── forecasters/                    # Scripts to make the forecasts
+│   ├── forecast_flares_NN.ipynb
+│   ├── forecast_flares_RF.ipynb
+│   ├── forecast_flares_RNN.ipynb
+│   ├── forecast_flares_SVM.ipynb
+│   ├── forecast_storms_NN.ipynb
+│   ├── forecast_storms_RF.ipynb
+│   ├── forecast_storms_RNN.ipynb
+│   └── forecast_storms_SVM.ipynb
+├── LICENSE
+└── README.md                       # This document
+</pre>
 
 ## What the code does
 

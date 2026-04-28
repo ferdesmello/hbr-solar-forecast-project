@@ -1,7 +1,7 @@
 # hbr-solar-forecast-project
 
 ## Overview
-I developed this project as the final activity of the first phase (training) of the course Residência em Tecnologias Aeroespaciais - Inteligência Artificial offered by Instituto Hardware BR, applying what I learning in the course to solve an aerospace problem.
+I developed this project as the final activity of the first phase (training) of the course Residência em Tecnologias Aeroespaciais - Inteligência Artificial offered by Instituto Hardware BR, applying what I learning in the course to solve an aerospace problem. Go [here](https://github.com/ferdesmello/heliocast) to see the development of this project for the second phase.
 
 I choose [space weather](https://en.wikipedia.org/wiki/Space_weather) forecasting, especially the forecasting of [solar flares](https://en.wikipedia.org/wiki/Solar_flare) and [geomagnetic storms](https), as space weather can significantly impact communications, the electrical grid, satellites, and astronauts in orbit.
 

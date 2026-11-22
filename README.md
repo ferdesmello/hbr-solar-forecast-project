@@ -1,4 +1,4 @@
-# hbr-solar-forecast-project
+# HBr solar-forecast project
 
 ## Overview
 I developed this project as the final activity of the first phase (training) of the course Residência em Tecnologias Aeroespaciais - Inteligência Artificial offered by Instituto Hardware BR, applying what I learning in the course to solve an aerospace problem. Go [here](https://github.com/ferdesmello/heliocast) to see the development of this project for the second phase.
